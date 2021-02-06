@@ -31,12 +31,20 @@ class CampaignController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'image' => 'required|mimes:jpg,jpeg,png'
+            'image' => 'required|mimes:jpg,jpeg,png',
+            'address' => 'required',
+            'required' => 'required',
+            'collected' => 'required',
+
         ]);
 
         $campaign = Campaign::create([
             'title' => $request->title,
             'description' => $request->description,
+            'address' => $request->address,
+            'required' => $request->required,
+            'collected' => $request->collected,
+
         ]);
 
         if($request->hasFile('image')){
@@ -94,6 +102,21 @@ class CampaignController extends Controller
             'response_message' => 'data campaigns berhasil ditambahkan',
             'data' => $data
         ], 200);        
+    }
+
+    public function search($keyword){
+        $campaigns = Campaign::select('*')
+        ->where('title','LIKE',"%".$keyword."%")
+        ->get();
+
+        $data['campaigns'] = $campaigns;
+        
+        return response()->json([
+            'response_code' => '00',
+            'response_message' => 'data campaigns berhasil ditambahkan',
+            'data' => $data
+        ], 200);   
+
     }
 
 }

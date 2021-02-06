@@ -22,8 +22,8 @@
                 </v-btn>
             </div>
             <v-layout wrap>
-                <v-flex v-for="(campaign,index) in campaigns" :key="`campaign-`+campaign.id" xs6>
-                    <v-card :to="'/campaign/' + campaign.id">
+                <v-flex v-for="(campaign) in campaigns" :key="`campaign-`+campaign.id" xs6>
+                    <!-- <v-card :to="'/campaign/' + campaign.id">
                         <v-img
                             :src="campaign.image"
                             class="white--text"
@@ -33,7 +33,10 @@
                                 v-text="campaign.title"
                             ></v-card-title>
                         </v-img>
-                    </v-card>
+                    </v-card> -->
+
+                    <campaign-item :campaign="campaign" />
+
                 </v-flex>
             </v-layout>
         </v-container>
@@ -47,7 +50,7 @@
             </div>
             <v-layout wrap>
                 <v-carousel hide-delimiters height="250px">
-                    <v-carousel-item v-for="(blog,i) in blogs" :key="`blog-`+blog.id">
+                    <v-carousel-item v-for="(blog) in blogs" :key="`blog-`+blog.id">
                         <v-img :src="blog.image" class="fill-height">
                             <v-container fill-height fluid pa-0 ma-0>
                                 <v-layout fill-height align-end>
@@ -67,7 +70,9 @@
 </template>
 
 <script>
+import CampaignItem from '../components/CampaignItem.vue'
     export default {
+        components: { CampaignItem },
          data: () => ({
              campaigns: [],
              blogs: []

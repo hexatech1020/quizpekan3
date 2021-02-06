@@ -35,7 +35,7 @@
 
             <v-card-actions>
                 <v-btn block color="primary" @click="donate" :disabled="campaign.collected >= campaign.required">
-                    <v-icon>mdi-money</v-icon> &nbsp
+                    <v-icon>mdi-money</v-icon> &nbsp;
                     donate
                 </v-btn>
             </v-card-actions>
@@ -46,6 +46,7 @@
 </template>
 
 <script>
+    import { mapActions, mapMutations} from 'vuex';
     export default {
         data: () =>({
             campaign: {},
@@ -54,6 +55,24 @@
             this.go()
         },
         methods: {
+
+            ...mapMutations({
+                tambahTransaksi : 'transaction/insert'
+            }),
+
+            ...mapActions({
+                setAlert : 'alert/set'
+            }),
+            
+            donate(){
+                this.tambahTransaksi()
+                this.setAlert({
+                    status : true,
+                    color: 'success',
+                    text : 'Transaksi berhasil ditambahkan'
+                })
+            },
+
             go(){
                 let {id} = this.$route.params
                 let url = '/api/campaign/'+id
@@ -67,9 +86,12 @@
                     console.log(response)
                 })                
             },
-            donate(){
-                this.$store.commit("increment")
-            }
+            // ...mapMutations({
+            //     donate : 'transaction/insert'
+            // }),
+            // donate(){
+            //     this.$store.commit('insert')
+            // }
         }
     
     }
