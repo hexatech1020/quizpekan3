@@ -31,7 +31,9 @@ export default {
                 .then((response) => {
                     let {data} = response.data
                     this.setAuth(data)
-                    if(this.user.user.id.length>0){
+                    console.log('adsada')
+                    console.log(this.user.user)
+                    if(this.user.user.email !== ""){
                         this.setAlert({
                             status : true , 
                             color : 'success', 

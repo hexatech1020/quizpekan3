@@ -90,15 +90,15 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
     ];
 
-    public function getCreatedAtAttribute($date)
-    {
-        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d H:i:s');
-    }
+    // public function getCreatedAtAttribute($date)
+    // {
+    //     return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d H:i:s');
+    // }
     
-    public function getUpdatedAtAttribute($date)
-    {
-        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d H:i:s');
-    }
+    // public function getUpdatedAtAttribute($date)
+    // {
+    //     return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d H:i:s');
+    // }
     
     public function generate_otp_code(){
         do{

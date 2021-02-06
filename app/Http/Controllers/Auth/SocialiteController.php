@@ -58,7 +58,7 @@ class SocialiteController extends Controller
         }catch(\Throwable $th){
             return response()->json([
                 'response_code' => '01',
-                'response_message' => 'login failed'
+                'response_message' => 'login faileds'
             ],401);
         }
     }

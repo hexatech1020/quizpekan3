@@ -48,7 +48,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         _this.setAuth(data);
 
-        if (_this.user.user.id.length > 0) {
+        console.log('adsada');
+        console.log(_this.user.user);
+
+        if (_this.user.user.email !== "") {
           _this.setAlert({
             status: true,
             color: 'success',

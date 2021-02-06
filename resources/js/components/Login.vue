@@ -130,6 +130,8 @@ export default {
             let url = '/api/auth/social/'+provider
             axios.get(url)
                 .then((response) => {
+                console.log('abc')
+                console.log(response.data)
                     let data = response.data
                     window.location.href = data.url
                 })

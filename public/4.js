@@ -146,6 +146,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       var url = '/api/auth/social/' + provider;
       axios.get(url).then(function (response) {
+        console.log('abc');
+        console.log(response.data);
         var data = response.data;
         window.location.href = data.url;
       })["catch"](function (error) {
